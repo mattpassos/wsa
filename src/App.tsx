@@ -1,6 +1,12 @@
 import { IonApp } from "@ionic/react";
+import { Route } from 'react-router-dom';
+import { IonReactRouter } from "@ionic/react-router";
 import BottomMenu from "./components/BottomMenu";
 import Header from "./components/Header";
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Settings from './pages/Settings'
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -27,6 +33,12 @@ import { Suspense } from "react";
 const App: React.FC = () => (
   <Suspense fallback={<div>Test</div>}>
     <IonApp>
+      <IonReactRouter>
+          <Route path="/" component={Home} exact />
+          <Route path="/Login" component={Login} exact />
+          <Route path="/Register" component={Register} exact />
+          <Route path="/Settings" component={Settings} exact />
+      </IonReactRouter>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <Header />
         <BottomMenu />
