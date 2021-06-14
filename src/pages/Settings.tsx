@@ -5,14 +5,14 @@ import './Settings.css';
 
 const Settings: React.FC = () => {
   return (
-        <IonPage>
+      <IonPage>
           <Header />
-          <IonContent fullscreen>
-            <ExploreContainer name="Settings" />
-          </IonContent>
-        </IonPage>
-      );
-    };
+      <IonContent>
+        <h1>Yo, I'm Settings</h1>
+      </IonContent>
+      </IonPage>
+);
+};
     
 export default Settings;
 
