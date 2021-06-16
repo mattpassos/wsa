@@ -33,6 +33,8 @@ import { Suspense } from "react";
 const App: React.FC = () => (
   <Suspense fallback={<div>Test</div>}>
     <IonApp>
+      <Header />
+        <BottomMenu />
       <IonReactRouter>
           <Route path="/" component={Home} exact />
           <Route path="/Login" component={Login} exact />
@@ -40,8 +42,7 @@ const App: React.FC = () => (
           <Route path="/Settings" component={Settings} exact />
       </IonReactRouter>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <Header />
-        <BottomMenu />
+        
       </FirebaseAppProvider>
     </IonApp>
   </Suspense>
