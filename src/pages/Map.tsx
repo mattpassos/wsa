@@ -2,6 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import ExploreContainer from '../components/ExploreContainer';
 import Header from '../components/Header';
 import './Map.css';
+import WSAMap from '../components/WSAMap';
 
 const Map: React.FC = () => {
   return (
@@ -9,6 +10,10 @@ const Map: React.FC = () => {
       <Header />
     <IonContent fullscreen>
       <h1>Map</h1>
+      <div id="mapid">
+<WSAMap />
+
+      </div>
       <ExploreContainer name="Map" />
     </IonContent>
   </IonPage>
