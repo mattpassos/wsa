@@ -1,12 +1,14 @@
-import { IonApp } from "@ionic/react";
-import { Route } from 'react-router-dom';
-import { IonReactRouter } from "@ionic/react-router";
+import { IonApp, IonSpinner, IonRouterOutlet } from "@ionic/react";
 import BottomMenu from "./components/BottomMenu";
 import Header from "./components/Header";
-import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Settings from './pages/Settings'
+import { IonReactRouter } from "@ionic/react-router";
+import { FirebaseAppProvider } from "reactfire";
+import { firebaseConfig } from "./config";
+import { Suspense } from "react";
+
+import Home from "./pages/Home";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -26,26 +28,29 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { FirebaseAppProvider } from "reactfire";
-import { firebaseConfig } from "./config";
-import { Suspense } from "react";
 
-const App: React.FC = () => (
-  <Suspense fallback={<div>Test</div>}>
+// Cleaned the code a bit. Changed the suspense to the spinning weel but not sure yet if we add a css to the app and place it centered or we add the code directly to this file. Added routes to the pages, know the Profile is loading faster but still, when coming back from Profile it takes a lot to load, as the app is loading from the start.
+
+
+
+const App: React.FC = () => {
+  return (
     <IonApp>
-      <Header />
-        <BottomMenu />
-      <IonReactRouter>
-          <Route path="/" component={Home} exact />
-          <Route path="/Login" component={Login} exact />
-          <Route path="/Register" component={Register} exact />
-          <Route path="/Settings" component={Settings} exact />
-      </IonReactRouter>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        
-      </FirebaseAppProvider>
+      <Suspense fallback={<div className="ion-text-center">
+        <IonSpinner name="lines"> </IonSpinner>
+      </div>}>
+        <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Header />
+              <Home />
+              <BottomMenu />
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </FirebaseAppProvider>
+      </Suspense>
     </IonApp>
-  </Suspense>
-);
+  );
+};
 
 export default App;

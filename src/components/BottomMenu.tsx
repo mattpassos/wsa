@@ -1,6 +1,5 @@
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import {
-  IonIcon,
   IonLabel,
   IonRouterOutlet,
   IonTabBar,
@@ -8,21 +7,24 @@ import {
   IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import {
-  personCircleOutline,
-  earthOutline,
-  homeOutline,
-  cameraOutline,
-  gridOutline,
-  planetOutline,
-} from "ionicons/icons";
-/*{import Home from '../pages/Home';}*/
+
+import Home from "../pages/Home";
 import Map from "../pages/Map";
-import Galleries from "../pages/Galleries";
-import Camera from "../pages/Camera";
+import Scan from "../pages/Scan";
 import Profile from "../pages/Profile";
 import Explore from "../pages/Explore";
+import Art from "../pages/Art";
+
+import Settings from "../pages/Settings";
+
 import "@ionic/react/css/core.css";
+
+import map from "../assets/map.svg";
+import explore from "../assets/explore.svg";
+import camera from "../assets/camera.svg";
+import home from "../assets/home.svg";
+
+import "./BottomMenu.css";
 
 const BottomMenu: React.FC = () => {
   return (
@@ -30,24 +32,29 @@ const BottomMenu: React.FC = () => {
       <IonTabs>
         <IonRouterOutlet>
           {/* Routes */}
-          {/* Home
-  {/*<Route exact path="/Home">
+          {/* Home */}
+          <Route exact path="/Home">
             <Home />
-  </Route>*/}
+          </Route>
+
+          {/* Settings */}
+          <Route exact path="/Settings">
+            <Settings />
+          </Route>
+
+          {/* Art */}
+          <Route exact path="/Art">
+            <Art />
+          </Route>
 
           {/* Map */}
           <Route exact path="/Map">
             <Map />
           </Route>
 
-          {/* Galleries */}
-          <Route exact path="/Galleries">
-            <Galleries />
-          </Route>
-
-          {/* Camera */}
-          <Route path="/Camera">
-            <Camera />
+          {/* Scan */}
+          <Route path="/Scan">
+            <Scan />
           </Route>
 
           {/* Profile */}
@@ -63,39 +70,27 @@ const BottomMenu: React.FC = () => {
 
         <IonTabBar slot="bottom">
           {/* Tabs */}
-          {/* Home 
-  <IonTabButton tab="Home" href="/Home">
-            <IonIcon icon={homeOutline} />
+          {/* Home */}
+          <IonTabButton tab="Home" href="/Home">
+            <img className="bottomMenuIcons" src={home} alt="Home" />
             <IonLabel>Home</IonLabel>
-          </IonTabButton>/*/}
+          </IonTabButton>
 
           {/* Map */}
           <IonTabButton tab="Map" href="/Map">
-            <IonIcon icon={earthOutline} />
+            <img className="bottomMenuIcons" src={map} alt="Map" />
             <IonLabel>Map</IonLabel>
           </IonTabButton>
 
-          {/* Galleries */}
-          <IonTabButton tab="Galleries" href="/Galleries">
-            <IonIcon icon={gridOutline} />
-            <IonLabel>Galleries</IonLabel>
-          </IonTabButton>
-
-          {/* Camera */}
-          <IonTabButton tab="Camera" href="/Camera">
-            <IonIcon icon={cameraOutline} />
-            <IonLabel>Camera</IonLabel>
-          </IonTabButton>
-
-          {/* Profile */}
-          <IonTabButton tab="Profile" href="/Profile">
-            <IonIcon icon={personCircleOutline} />
-            <IonLabel>Profile</IonLabel>
+          {/* Scan */}
+          <IonTabButton tab="Scan" href="/Scan">
+            <img className="bottomMenuIcons" src={camera} alt="Scan" />
+            <IonLabel>Scan</IonLabel>
           </IonTabButton>
 
           {/* Explore */}
           <IonTabButton tab="Explore" href="/Explore">
-            <IonIcon icon={planetOutline} />
+            <img className="bottomMenuIcons" src={explore} alt="Explore" />
             <IonLabel>Explore</IonLabel>
           </IonTabButton>
         </IonTabBar>

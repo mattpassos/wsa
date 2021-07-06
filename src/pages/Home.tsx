@@ -1,32 +1,62 @@
-import { IonContent, IonPage, IonButton, IonInput } from '@ionic/react';
-import './Home.css';
+import React, { useRef, useState } from "react";
+import {
+  IonContent,
+  IonPage,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+} from "@ionic/react";
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css";
 import Header from "../components/Header";
-import { useState, useEffect } from 'react';
+import SwiperCore, { Pagination } from "swiper/core";
+import { usePopularArtworks, useNearYouArtworks } from "../hooks/artworks";
+import AssetSlider from "../components/AssetSlider";
 
+import "./Home.css";
 
-const Home: React.FC = () => {
-  const [input , setInput] = useState<string>('')
+// install Swiper modules
+SwiperCore.use([Pagination]);
 
-  useEffect(() => {
-    console.log(input)
-  }, [input])
-  
+export const Home: React.FC = () => {
+  const popularArtworksData = usePopularArtworks({
+    limit: 9,
+    property: "likes",
+  });
+
+  const recentArtworksData = usePopularArtworks({
+    limit: 9,
+    property: "dateAdded",
+  });
+
+  // Later we need to limit to 9
+  const nearYouArtworksData = useNearYouArtworks();
+
+  // Optimizing Page Renders
+  const [isVisible, setIsVisible] = useState(true);
+
+  useIonViewDidEnter(() => {
+    console.log("useIonViewDidEnter");
+    setIsVisible(true);
+  });
+
+  useIonViewDidLeave(() => {
+    console.log("useIonViewDidLeave");
+    setIsVisible(false);
+  });
+
+  if (!isVisible) return null;
+
   return (
-
     <IonPage>
       <Header />
-      
       <IonContent>
-        <div className="ion-padding">
-        
-        <IonInput></IonInput>
-        <IonButton routerLink="/Login">Login</IonButton>
-        <IonButton routerLink="/Register">Register</IonButton>
-        </div>
+        <AssetSlider title="Popular" data={popularArtworksData} />
+        <AssetSlider title="Near you" data={nearYouArtworksData} />
+        <AssetSlider title="Recently Added" data={recentArtworksData} />
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
-
+// The memo uses the memory to render less
+export default React.memo(Home);

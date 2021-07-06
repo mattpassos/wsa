@@ -1,3 +1,19 @@
+ion-toolbar {
+  height: 100px;
+}
+
+.logo-full {
+  width: 321px;
+  height: 99px;
+  margin-left: 16px;
+  margin-top: 0px;
+}
+
+#userIcon {
+  --background-activated: false;
+  margin-right: 5px;
+}
+
 h1 {
   text-align: center;
 }

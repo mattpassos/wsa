@@ -1,21 +1,25 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle } from '@ionic/react';
-import { settingsOutline } from 'ionicons/icons';
+import { IonHeader, IonToolbar, IonButtons, IonButton } from '@ionic/react';
 import './Header.css';
+
+import user from '../assets/user.svg';
+import logoNavBar from '../assets/logoNavBar.svg';
 
 
 
 const Header: React.FC = () => {
 return (
-
     <IonHeader>
         <IonToolbar>
-            <h1>What Street Art</h1>
-            <IonButtons slot="primary">
-                <IonButton href="/Settings">
-                    <IonIcon icon={settingsOutline}/>
+            
+                <img className = "logo-full" src = {logoNavBar} alt="Logo"/>      
+
+            <IonButtons slot="end">
+                <IonButton id="userIcon" href="/Profile">
+                <img src={user} alt="Profile" ></img>
                 </IonButton>
             </IonButtons>
+
         </IonToolbar>
     </IonHeader>
 
