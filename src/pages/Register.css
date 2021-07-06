@@ -1,0 +1,45 @@
+.registerCard {
+  text-align: center;
+  background-color: white;
+  top: 40px;
+  left: 70px;
+  height: 230px;
+  width: 270px !important;
+}
+
+.t1 {
+  font-size: 17px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  line-height: 23px;
+}
+
+.t2 {
+  font-size: 13px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 17px;
+}
+
+.ionInputRegister {
+  text-align: start;
+  text-transform: capitalize;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 17.29px;
+  background-color: white !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.buttonRegister {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 20px;
+}
+
+.newHere {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
